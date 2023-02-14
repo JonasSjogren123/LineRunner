@@ -104,11 +104,11 @@
 				79E4B31B299BDB77003FDB2D /* LineRunnerApp.swift */,
 				79E4B31D299BDB77003FDB2D /* ContentView.swift */,
 				79E4B346299BDD79003FDB2D /* MapView.swift */,
+				79E4B348299BDDC4003FDB2D /* Coordinates.swift */,
+				79E4B34A299BDDF0003FDB2D /* LocationManager.swift */,
 				79E4B31F299BDB79003FDB2D /* Assets.xcassets */,
 				79E4B324299BDB79003FDB2D /* Info.plist */,
 				79E4B321299BDB79003FDB2D /* Preview Content */,
-				79E4B348299BDDC4003FDB2D /* Coordinates.swift */,
-				79E4B34A299BDDF0003FDB2D /* LocationManager.swift */,
 			);
 			path = LineRunner;
 			sourceTree = "<group>";

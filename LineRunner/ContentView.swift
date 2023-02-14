@@ -16,6 +16,7 @@ struct ContentView: View {
     
     @StateObject var locationManager = LocationManager()
     @State var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3323341, longitude: -122.0312186), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+    
         
     @State var places = [
         CLLocationCoordinate2D(latitude: 37.3340000, longitude: -122.034),
