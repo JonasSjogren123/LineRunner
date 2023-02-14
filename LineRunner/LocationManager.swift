@@ -12,7 +12,6 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     let manager = CLLocationManager()
     var location : CLLocationCoordinate2D?
     
-   // @EnvironmentObject var coordinates: Coordinates
     @Published var lineCoordinates: [CLLocationCoordinate2D] = []
 
     override init() {

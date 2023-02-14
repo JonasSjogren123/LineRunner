@@ -9,7 +9,8 @@ import SwiftUI
 import MapKit
 
 struct MapView: UIViewRepresentable {
-
+    
+    @StateObject var locationManager = LocationManager()
     let region: MKCoordinateRegion
     let lineCoordinates: [CLLocationCoordinate2D]
 
