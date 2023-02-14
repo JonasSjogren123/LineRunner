@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct LineRunnerApp: App {
+   // @StateObject var coordinates = Coordinates()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+              //  .environmentObject(coordinates)
         }
     }
 }

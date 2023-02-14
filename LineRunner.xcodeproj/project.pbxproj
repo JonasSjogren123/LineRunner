@@ -13,6 +13,9 @@
 		79E4B323299BDB79003FDB2D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79E4B322299BDB79003FDB2D /* Preview Assets.xcassets */; };
 		79E4B32E299BDB7A003FDB2D /* LineRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B32D299BDB7A003FDB2D /* LineRunnerTests.swift */; };
 		79E4B339299BDB7A003FDB2D /* LineRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B338299BDB7A003FDB2D /* LineRunnerUITests.swift */; };
+		79E4B347299BDD79003FDB2D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B346299BDD79003FDB2D /* MapView.swift */; };
+		79E4B349299BDDC4003FDB2D /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B348299BDDC4003FDB2D /* Coordinates.swift */; };
+		79E4B34B299BDDF0003FDB2D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B34A299BDDF0003FDB2D /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		79E4B334299BDB7A003FDB2D /* LineRunnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LineRunnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79E4B338299BDB7A003FDB2D /* LineRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineRunnerUITests.swift; sourceTree = "<group>"; };
 		79E4B33A299BDB7A003FDB2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79E4B346299BDD79003FDB2D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		79E4B348299BDDC4003FDB2D /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		79E4B34A299BDDF0003FDB2D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +103,12 @@
 			children = (
 				79E4B31B299BDB77003FDB2D /* LineRunnerApp.swift */,
 				79E4B31D299BDB77003FDB2D /* ContentView.swift */,
+				79E4B346299BDD79003FDB2D /* MapView.swift */,
 				79E4B31F299BDB79003FDB2D /* Assets.xcassets */,
 				79E4B324299BDB79003FDB2D /* Info.plist */,
 				79E4B321299BDB79003FDB2D /* Preview Content */,
+				79E4B348299BDDC4003FDB2D /* Coordinates.swift */,
+				79E4B34A299BDDF0003FDB2D /* LocationManager.swift */,
 			);
 			path = LineRunner;
 			sourceTree = "<group>";
@@ -260,7 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				79E4B31E299BDB77003FDB2D /* ContentView.swift in Sources */,
+				79E4B347299BDD79003FDB2D /* MapView.swift in Sources */,
+				79E4B34B299BDDF0003FDB2D /* LocationManager.swift in Sources */,
 				79E4B31C299BDB77003FDB2D /* LineRunnerApp.swift in Sources */,
+				79E4B349299BDDC4003FDB2D /* Coordinates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
