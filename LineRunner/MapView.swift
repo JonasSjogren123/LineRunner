@@ -38,7 +38,9 @@ struct MapView: UIViewRepresentable {
 
 }
 
-class Coordinator: NSObject, MKMapViewDelegate {
+class Coordinator: NSObject,ObservableObject,CLLocationManagerDelegate, MKMapViewDelegate {
+    
+    @StateObject var coordinats = Coordinates()
   var parent: MapView
 
   init(_ parent: MapView) {

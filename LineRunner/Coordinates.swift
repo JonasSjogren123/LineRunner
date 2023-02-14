@@ -11,7 +11,7 @@ import SwiftUI
 
 
 class Coordinates: ObservableObject {
-    
+  
     @Published var lineCoordinates: [CLLocationCoordinate2D] = []
     
 }
