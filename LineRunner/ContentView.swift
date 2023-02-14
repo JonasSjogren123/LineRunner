@@ -3,6 +3,10 @@
 //  LineRunner
 //
 //  Created by Jonas Sjögren on 2023-02-14.
+
+// 1. locationmanager ska vara ett stateobject
+// 2. skicka med din locationmanager i stället för Places in mapview
+// -  Läs på hur du skickar en stateobject till en anna view
 //
 
 import SwiftUI
