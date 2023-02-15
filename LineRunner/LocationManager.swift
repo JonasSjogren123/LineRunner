@@ -11,8 +11,12 @@ import CoreLocation
 class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     let manager = CLLocationManager()
     var location : CLLocationCoordinate2D?
-    
+
+    //@Published var lineCoordinates: [CLLocationCoordinate2D] = []
+    @Published var coordinates = Coordinates()
+    @Published var locations: [CLLocationCoordinate2D] = []
     @Published var lineCoordinates: [CLLocationCoordinate2D] = []
+
 
     override init() {
         super.init()
@@ -25,11 +29,12 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //var location: CLLocationCoordinate2D
         location = locations.first?.coordinate
         print("Plats uppdaterad! \(location)")
        
-        //coordinates.lineCoordinates.append(location!)
-       // print("lineCoordinates \(coordinates.lineCoordinates)")
+        lineCoordinates.append(location!)
+       print("lineCoordinates \(lineCoordinates)")
     }
 }
 

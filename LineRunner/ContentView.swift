@@ -16,7 +16,8 @@ struct ContentView: View {
     
     @StateObject var locationManager = LocationManager()
     @State var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3323341, longitude: -122.0312186), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
-    
+    //@StateObject var coordinates = Coordinates()
+
         
     @State var places = [
         CLLocationCoordinate2D(latitude: 37.3340000, longitude: -122.034),
@@ -28,7 +29,7 @@ struct ContentView: View {
         VStack {
             MapView(
                 region: region,
-                lineCoordinates: places
+                lineCoordinates: locationManager.lineCoordinates
             )
             .edgesIgnoringSafeArea(.all)
         }
@@ -52,9 +53,10 @@ struct ContentView: View {
         print(places)
         }
     
+    /*
     func addPlace() {
         print("function addPlace activated")
-            if let location = locationManager.location {
+        if let location = $locationManager.location {
                 let newPlace = CLLocationCoordinate2D(
                                      latitude: location.latitude,
                                      longitude: location.longitude)
@@ -62,5 +64,6 @@ struct ContentView: View {
                 print(places)
             }
         }
+ */
 }
 
