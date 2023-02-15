@@ -19,7 +19,7 @@ struct MapView: UIViewRepresentable {
     mapView.delegate = context.coordinator
     mapView.region = region
 
-    let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
+    let polyline = MKPolyline(coordinates: locationManager.lineCoordinates, count: locationManager.lineCoordinates.count)
     mapView.addOverlay(polyline)
 
     return mapView
@@ -28,15 +28,13 @@ struct MapView: UIViewRepresentable {
   func updateUIView(_ view: MKMapView, context: Context) {
     //lineCoordinates = places
     print("updateUIView")
-    let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
+    let polyline = MKPolyline(coordinates: locationManager.lineCoordinates, count: locationManager.lineCoordinates.count)
     view.addOverlay(polyline)
-
   }
 
   func makeCoordinator() -> Coordinator {
     Coordinator(self)
   }
-
 }
 
 class Coordinator: NSObject, MKMapViewDelegate {
