@@ -33,16 +33,16 @@ struct ContentView: View {
             )
             .edgesIgnoringSafeArea(.all)
         }
-        Button(action: {
+        /*Button(action: {
             addPlaceTest()
             print("Button addPlace pressed")
         }) {
             Text("Add place")
-        }
+        }*/
         Button(action: {
                 locationManager.startLocationUpdates()
         }) {
-            Text("Start updates")
+            Text("PLAY")
         }
     }
     
