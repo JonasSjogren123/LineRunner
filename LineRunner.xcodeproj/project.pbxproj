@@ -16,7 +16,6 @@
 		79E4B347299BDD79003FDB2D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B346299BDD79003FDB2D /* MapView.swift */; };
 		79E4B349299BDDC4003FDB2D /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B348299BDDC4003FDB2D /* Coordinates.swift */; };
 		79E4B34B299BDDF0003FDB2D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B34A299BDDF0003FDB2D /* LocationManager.swift */; };
-		79FFB806299E2E3200C73083 /* GoogleService-Info-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79FFB805299E2E3200C73083 /* GoogleService-Info-3.plist */; };
 		79FFB81A299E411000C73083 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 79FFB819299E411000C73083 /* FirebaseFirestore */; };
 		79FFB81C299E411000C73083 /* FirebaseFunctionsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 79FFB81B299E411000C73083 /* FirebaseFunctionsSwift-Beta */; };
 		79FFB81E299E411000C73083 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 79FFB81D299E411000C73083 /* FirebaseFirestoreSwift-Beta */; };
@@ -24,6 +23,8 @@
 		79FFB822299E411000C73083 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 79FFB821299E411000C73083 /* FirebaseStorage */; };
 		79FFB824299E411000C73083 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 79FFB823299E411000C73083 /* FirebaseFunctions */; };
 		79FFB826299E411000C73083 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 79FFB825299E411000C73083 /* FirebaseAuth */; };
+		79FFB828299E5FE500C73083 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79FFB827299E5FE500C73083 /* GoogleService-Info.plist */; };
+		79FFB82A299E73BE00C73083 /* TestFirebaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFB829299E73BE00C73083 /* TestFirebaseItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +60,8 @@
 		79E4B346299BDD79003FDB2D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		79E4B348299BDDC4003FDB2D /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		79E4B34A299BDDF0003FDB2D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		79FFB805299E2E3200C73083 /* GoogleService-Info-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-3.plist"; sourceTree = "<group>"; };
+		79FFB827299E5FE500C73083 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		79FFB829299E73BE00C73083 /* TestFirebaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFirebaseItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		79E4B30F299BDB77003FDB2D = {
 			isa = PBXGroup;
 			children = (
+				79FFB827299E5FE500C73083 /* GoogleService-Info.plist */,
 				79E4B31A299BDB77003FDB2D /* LineRunner */,
 				79E4B32C299BDB7A003FDB2D /* LineRunnerTests */,
 				79E4B337299BDB7A003FDB2D /* LineRunnerUITests */,
@@ -123,9 +126,9 @@
 				79E4B348299BDDC4003FDB2D /* Coordinates.swift */,
 				79E4B34A299BDDF0003FDB2D /* LocationManager.swift */,
 				79E4B31F299BDB79003FDB2D /* Assets.xcassets */,
-				79FFB805299E2E3200C73083 /* GoogleService-Info-3.plist */,
 				79E4B324299BDB79003FDB2D /* Info.plist */,
 				79E4B321299BDB79003FDB2D /* Preview Content */,
+				79FFB829299E73BE00C73083 /* TestFirebaseItem.swift */,
 			);
 			path = LineRunner;
 			sourceTree = "<group>";
@@ -272,8 +275,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				79E4B323299BDB79003FDB2D /* Preview Assets.xcassets in Resources */,
-				79FFB806299E2E3200C73083 /* GoogleService-Info-3.plist in Resources */,
 				79E4B320299BDB79003FDB2D /* Assets.xcassets in Resources */,
+				79FFB828299E5FE500C73083 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +306,7 @@
 				79E4B34B299BDDF0003FDB2D /* LocationManager.swift in Sources */,
 				79E4B31C299BDB77003FDB2D /* LineRunnerApp.swift in Sources */,
 				79E4B349299BDDC4003FDB2D /* Coordinates.swift in Sources */,
+				79FFB82A299E73BE00C73083 /* TestFirebaseItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

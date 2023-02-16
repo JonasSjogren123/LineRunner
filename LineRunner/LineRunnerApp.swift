@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 @main
 struct LineRunnerApp: App {
@@ -18,7 +19,6 @@ struct LineRunnerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-              //  .environmentObject(coordinates)
         }
     }
 }
