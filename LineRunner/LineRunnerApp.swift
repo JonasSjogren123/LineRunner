@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct LineRunnerApp: App {
-   // @StateObject var coordinates = Coordinates()
+
+    init() {
+   FirebaseApp.configure()
+    }
     
     var body: some Scene {
         WindowGroup {
