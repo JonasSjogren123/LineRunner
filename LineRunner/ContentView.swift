@@ -14,6 +14,8 @@ struct ContentView: View {
     let db = Firestore.firestore()
     
     @StateObject var locationManager = LocationManager()
+    @StateObject var playerManager = PlayerManager()
+
     @State var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3323341, longitude: -122.0312186), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
         
     @State var places = [
@@ -22,7 +24,7 @@ struct ContentView: View {
         CLLocationCoordinate2D(latitude: 37.3323341, longitude: -122.024)
     ]
     
-    @State var testFirebaseItems = [TestFirebaseItem]()
+    @State var players = [Player]()
     
     var body: some View {
         VStack {
@@ -82,7 +84,7 @@ struct ContentView: View {
             if let err = err {
                 print("Error getting document \(err)")
             } else {
-                testFirebaseItems.removeAll()
+                players.removeAll()
                 for document in snapshot.documents {
 
                     let result = Result {
@@ -90,8 +92,8 @@ struct ContentView: View {
                     }
                     switch result  {
                     case .success(let item)  :
-                        testFirebaseItems.append(item)
-                        print("testFirebaseItems FFFFFFFFFFFF\(testFirebaseItems)FFFFFFFFFFFF")
+                        players.append(item)
+                        print("testFirebaseItems FFFFFFFFFFFF\(players)FFFFFFFFFFFF")
                     case .failure(let error) :
                         print("Error decoding item: \(error)")
                     }
