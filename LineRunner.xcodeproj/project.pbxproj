@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79AA498E29A2B070002ACC98 /* FirestoreStructTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AA498D29A2B070002ACC98 /* FirestoreStructTest.swift */; };
 		79E4B31C299BDB77003FDB2D /* LineRunnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B31B299BDB77003FDB2D /* LineRunnerApp.swift */; };
 		79E4B31E299BDB77003FDB2D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B31D299BDB77003FDB2D /* ContentView.swift */; };
 		79E4B320299BDB79003FDB2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79E4B31F299BDB79003FDB2D /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		79AA498D29A2B070002ACC98 /* FirestoreStructTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreStructTest.swift; sourceTree = "<group>"; };
 		79E4B318299BDB77003FDB2D /* LineRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79E4B31B299BDB77003FDB2D /* LineRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineRunnerApp.swift; sourceTree = "<group>"; };
 		79E4B31D299BDB77003FDB2D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -132,9 +134,10 @@
 				79E4B31F299BDB79003FDB2D /* Assets.xcassets */,
 				79E4B324299BDB79003FDB2D /* Info.plist */,
 				79E4B321299BDB79003FDB2D /* Preview Content */,
-				79FFB829299E73BE00C73083 /* TestFirebaseItem.swift */,
 				79FFB82D299E935900C73083 /* PlayerManager.swift */,
 				79FFB82B299E862E00C73083 /* Player.swift */,
+				79FFB829299E73BE00C73083 /* TestFirebaseItem.swift */,
+				79AA498D29A2B070002ACC98 /* FirestoreStructTest.swift */,
 			);
 			path = LineRunner;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				79E4B31C299BDB77003FDB2D /* LineRunnerApp.swift in Sources */,
 				79FFB82C299E862E00C73083 /* Player.swift in Sources */,
 				79E4B349299BDDC4003FDB2D /* Coordinates.swift in Sources */,
+				79AA498E29A2B070002ACC98 /* FirestoreStructTest.swift in Sources */,
 				79FFB82E299E935900C73083 /* PlayerManager.swift in Sources */,
 				79FFB82A299E73BE00C73083 /* TestFirebaseItem.swift in Sources */,
 			);

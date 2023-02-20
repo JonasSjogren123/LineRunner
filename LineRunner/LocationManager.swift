@@ -13,7 +13,7 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     var location : CLLocationCoordinate2D?
 
     @Published var coordinates = Coordinates()
-    @Published var locations: [CLLocationCoordinate2D] = []
+    //@Published var locations: [CLLocationCoordinate2D] = []
     @Published var lineCoordinates: [CLLocationCoordinate2D] = []
 
 

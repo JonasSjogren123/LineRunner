@@ -8,19 +8,11 @@
 import Foundation
 import FirebaseFirestoreSwift
 import SwiftUI
+import MapKit
 
-class Player : Identifiable, ObservableObject {
-    @StateObject var locationManager = LocationManager()
-    //var coordinates = locationManager.lineCoordinates
-    //@DocumentID var id : String?
-    let id = UUID()
+struct Player : Codable, Identifiable {
+    @DocumentID var id : String?
     var name : String
-    var score: Int = 0
-    var coordinates: [Double] = []
-    
-    init(name: String) {
-        self.name = name
-    }
-    
+    var category : String = ""
+    var done: Bool = false
 }
-
