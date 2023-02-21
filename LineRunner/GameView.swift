@@ -9,7 +9,7 @@ import MapKit
 import Firebase
 import FirebaseAuth
 
-struct ContentView: View {
+struct GameView: View {
     
     let db = Firestore.firestore()
     
@@ -24,7 +24,7 @@ struct ContentView: View {
         CLLocationCoordinate2D(latitude: 37.3323341, longitude: -122.024)
     ]
     
-    @State var player = Player(name: "Box-Arne")
+    @State var player = Player()
     @State var players = [Player]()
     
     var body: some View {

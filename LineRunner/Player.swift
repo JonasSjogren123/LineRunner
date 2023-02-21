@@ -10,9 +10,8 @@ import FirebaseFirestoreSwift
 import SwiftUI
 import MapKit
 
-struct Player : Codable, Identifiable {
+class Player : Codable, Identifiable {
     @DocumentID var id : String?
-    var name : String
-    var category : String = ""
-    var done: Bool = false
+    var name : String = ""
+    var score = 0
 }

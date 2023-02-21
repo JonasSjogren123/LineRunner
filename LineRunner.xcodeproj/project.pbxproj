@@ -10,7 +10,7 @@
 		79AA498E29A2B070002ACC98 /* FirestoreStructTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AA498D29A2B070002ACC98 /* FirestoreStructTest.swift */; };
 		79AA499029A3C5FA002ACC98 /* PlayerLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AA498F29A3C5FA002ACC98 /* PlayerLoginView.swift */; };
 		79E4B31C299BDB77003FDB2D /* LineRunnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B31B299BDB77003FDB2D /* LineRunnerApp.swift */; };
-		79E4B31E299BDB77003FDB2D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B31D299BDB77003FDB2D /* ContentView.swift */; };
+		79E4B31E299BDB77003FDB2D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B31D299BDB77003FDB2D /* GameView.swift */; };
 		79E4B320299BDB79003FDB2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79E4B31F299BDB79003FDB2D /* Assets.xcassets */; };
 		79E4B323299BDB79003FDB2D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79E4B322299BDB79003FDB2D /* Preview Assets.xcassets */; };
 		79E4B32E299BDB7A003FDB2D /* LineRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B32D299BDB7A003FDB2D /* LineRunnerTests.swift */; };
@@ -53,7 +53,7 @@
 		79AA498F29A3C5FA002ACC98 /* PlayerLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerLoginView.swift; sourceTree = "<group>"; };
 		79E4B318299BDB77003FDB2D /* LineRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79E4B31B299BDB77003FDB2D /* LineRunnerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineRunnerApp.swift; sourceTree = "<group>"; };
-		79E4B31D299BDB77003FDB2D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		79E4B31D299BDB77003FDB2D /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		79E4B31F299BDB79003FDB2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79E4B322299BDB79003FDB2D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		79E4B324299BDB79003FDB2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				79E4B31B299BDB77003FDB2D /* LineRunnerApp.swift */,
-				79E4B31D299BDB77003FDB2D /* ContentView.swift */,
+				79E4B31D299BDB77003FDB2D /* GameView.swift */,
 				79E4B346299BDD79003FDB2D /* MapView.swift */,
 				79E4B348299BDDC4003FDB2D /* Coordinates.swift */,
 				79E4B34A299BDDF0003FDB2D /* LocationManager.swift */,
@@ -313,7 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79E4B31E299BDB77003FDB2D /* ContentView.swift in Sources */,
+				79E4B31E299BDB77003FDB2D /* GameView.swift in Sources */,
 				79E4B347299BDD79003FDB2D /* MapView.swift in Sources */,
 				79E4B34B299BDDF0003FDB2D /* LocationManager.swift in Sources */,
 				79E4B31C299BDB77003FDB2D /* LineRunnerApp.swift in Sources */,

@@ -15,6 +15,8 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     @Published var coordinates = Coordinates()
     //@Published var locations: [CLLocationCoordinate2D] = []
     @Published var lineCoordinates: [CLLocationCoordinate2D] = []
+    
+    let player = Player()
 
 
     override init() {

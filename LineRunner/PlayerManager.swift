@@ -13,13 +13,13 @@ import Firebase
 import FirebaseAuth
 
 class PlayerManager: ObservableObject {
-    @Published var player = Player(name: "nameTest")
+    @Published var player = Player()
     let db = Firestore.firestore()
     
     @State var players = [Player]()
 
     func saveToFirestore(itemName: String) {
-        let item = Player(name: itemName)
+        let item = Player()
     
         do {
             _ = try db.collection("items").addDocument(from: item)
