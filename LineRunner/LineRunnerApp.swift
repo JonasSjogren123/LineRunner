@@ -18,7 +18,8 @@ struct LineRunnerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            PlayerLoginView()
         }
     }
 }

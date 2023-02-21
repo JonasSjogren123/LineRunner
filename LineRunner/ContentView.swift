@@ -24,6 +24,7 @@ struct ContentView: View {
         CLLocationCoordinate2D(latitude: 37.3323341, longitude: -122.024)
     ]
     
+    @State var player = Player(name: "Box-Arne")
     @State var players = [Player]()
     
     var body: some View {
@@ -35,13 +36,13 @@ struct ContentView: View {
             .edgesIgnoringSafeArea(.all)
         }
         Button(action: {
-            saveToFirestore(itemName: "Skall bli en massa koordinater")
+           // saveToFirestore(itemName: "Skall bli en massa koordinater")
             print("Button saveToFirestore pressed")
         }) {
             Text("Save To Firestore")
         }
         Button(action: {
-            listenToFirestore()
+           // listenToFirestore()
             print("Button listeToFirestore pressed")
         }) {
             Text("Listen to Firestore")
@@ -67,11 +68,13 @@ struct ContentView: View {
         }
     
 
-    func saveToFirestore(itemName: String) {
-        let item = TestFirebaseItem(name: itemName)
+    /*func saveToFirestore(itemName: String) {
+        let item = player(itemName: "Test")
+       //let item = TestFirebaseItem(name: itemName)
+
     
         do {
-            _ = try db.collection("items").addDocument(from: item)
+            _ = try db.collection("items").addDocument(data: item)
         } catch {
             print("Error saving to DB")
         }
@@ -100,7 +103,7 @@ struct ContentView: View {
                 }
             }
         }
-    }
+    }*/
     
 }
 
