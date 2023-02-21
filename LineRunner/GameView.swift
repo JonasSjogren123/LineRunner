@@ -17,13 +17,7 @@ struct GameView: View {
     @StateObject var playerManager = PlayerManager()
 
     @State var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3323341, longitude: -122.0312186), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
-        
-    @State var places = [
-        CLLocationCoordinate2D(latitude: 37.3340000, longitude: -122.034),
-        CLLocationCoordinate2D(latitude: 37.3323341, longitude: -122.029),
-        CLLocationCoordinate2D(latitude: 37.3323341, longitude: -122.024)
-    ]
-    
+
     @State var player = Player()
     @State var players = [Player]()
     
@@ -36,36 +30,11 @@ struct GameView: View {
             .edgesIgnoringSafeArea(.all)
         }
         Button(action: {
-           // saveToFirestore(itemName: "Skall bli en massa koordinater")
-            print("Button saveToFirestore pressed")
-        }) {
-            Text("Save To Firestore")
-        }
-        Button(action: {
-           // listenToFirestore()
-            print("Button listeToFirestore pressed")
-        }) {
-            Text("Listen to Firestore")
-        }
-        Button(action: {
-            addPlaceTest()
-            print("Button addPlace pressed")
-        }) {
-            Text("Add place")
-        }
-        Button(action: {
                 locationManager.startLocationUpdates()
         }) {
             Text("PLAY")
         }
     }
-    
-    func addPlaceTest() {
-        let newPlace = CLLocationCoordinate2D(latitude: 37.33550, longitude: -122.012363)
-        places.append(newPlace)
-        print("Button addPin pressed, function addPin Excecuted, newPlace appended")
-        print(places)
-        }
     
 
     /*func saveToFirestore(itemName: String) {
@@ -79,8 +48,8 @@ struct GameView: View {
             print("Error saving to DB")
         }
     }
-    
-    func listenToFirestore() {
+     */
+   /*  func listenToFirestore() {
         db.collection("items").addSnapshotListener { snapshot, err in
             guard let snapshot = snapshot else {return}
             
@@ -103,7 +72,7 @@ struct GameView: View {
                 }
             }
         }
-    }*/
-    
+    }
+    */
 }
 

@@ -10,7 +10,6 @@ import MapKit
 
 struct MapView: UIViewRepresentable {
     
-    @StateObject var locationManager = LocationManager()
     let region: MKCoordinateRegion
     let lineCoordinates: [CLLocationCoordinate2D]
 
@@ -55,5 +54,32 @@ class Coordinator: NSObject, MKMapViewDelegate {
     }
     return MKOverlayRenderer()
   }
+    
+    /*func listenToFirestore() {
+        db.collection("items").addSnapshotListener { snapshot, err in
+            guard let snapshot = snapshot else {return}
+            
+            if let err = err {
+                print("Error getting document \(err)")
+            } else {
+                players.removeAll()
+                for document in snapshot.documents {
+
+                    let result = Result {
+                        try document.data(as: TestFirebaseItem.self)
+                    }
+                    switch result  {
+                    case .success(let item)  :
+                        players.append(item)
+                        print("testFirebaseItems FFFFFFFFFFFF\(players)FFFFFFFFFFFF")
+                    case .failure(let error) :
+                        print("Error decoding item: \(error)")
+                    }
+                }
+            }
+        }
+    }*/
+    
+    
 }
 
