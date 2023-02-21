@@ -7,9 +7,12 @@
 
 import SwiftUI
 import MapKit
+import Foundation
+import CoreLocation
+import Firebase
 
 struct MapView: UIViewRepresentable {
-    
+
     let region: MKCoordinateRegion
     let lineCoordinates: [CLLocationCoordinate2D]
 
@@ -39,9 +42,11 @@ struct MapView: UIViewRepresentable {
 }
 
 class Coordinator: NSObject, MKMapViewDelegate {
-  var parent: MapView
-
-  init(_ parent: MapView) {
+    
+    let db = Firestore.firestore()
+    var parent: MapView
+    
+    init(_ parent: MapView) {
     self.parent = parent
   }
 
@@ -55,7 +60,7 @@ class Coordinator: NSObject, MKMapViewDelegate {
     return MKOverlayRenderer()
   }
     
-    /*func listenToFirestore() {
+    func listenToFirestore() {
         db.collection("items").addSnapshotListener { snapshot, err in
             guard let snapshot = snapshot else {return}
             
@@ -78,7 +83,7 @@ class Coordinator: NSObject, MKMapViewDelegate {
                 }
             }
         }
-    }*/
+    }
     
     
 }

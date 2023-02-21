@@ -10,11 +10,11 @@ import CoreLocation
 import Firebase
 
 class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
-    let manager = CLLocationManager()
-    var location : CLLocationCoordinate2D?
-    
+  
     let db = Firestore.firestore()
 
+    let manager = CLLocationManager()
+    var location : CLLocationCoordinate2D?
 
     @Published var coordinates = Coordinates()
     //@Published var locations: [CLLocationCoordinate2D] = []
