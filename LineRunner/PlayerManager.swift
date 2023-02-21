@@ -28,6 +28,19 @@ class PlayerManager: ObservableObject {
         }
     }
     
+    /*
+     func saveToFirestore(itemName: String) {
+         let item = Item(name: itemName)
+         guard let user = Auth.auth().currentUser else {return}
+         
+         do {
+             _ = try db.collection("users").document(user.uid).collection("items").addDocument(from: item)
+         } catch {
+             print("Error saving to DB")
+         }
+     }
+     */
+    
     func listenToFirestore() {
         db.collection("items").addSnapshotListener { [self] snapshot, err in
             guard let snapshot = snapshot else {return}
