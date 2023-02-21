@@ -12,10 +12,11 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     let manager = CLLocationManager()
     var location : CLLocationCoordinate2D?
 
-    //@Published var lineCoordinates: [CLLocationCoordinate2D] = []
     @Published var coordinates = Coordinates()
-    @Published var locations: [CLLocationCoordinate2D] = []
+    //@Published var locations: [CLLocationCoordinate2D] = []
     @Published var lineCoordinates: [CLLocationCoordinate2D] = []
+    
+    let player = Player()
 
 
     override init() {
@@ -36,5 +37,23 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
         lineCoordinates.append(location!)
        print("lineCoordinates \(lineCoordinates)")
     }
+    
+    func convertCllocationCoordinate2DToGepoint() {
+        
+    }
+    
+    /*func saveToFirestore(itemName: String) {
+        let item = player(itemName: "Test")
+       //let item = TestFirebaseItem(name: itemName)
+
+    
+        do {
+            _ = try db.collection("items").addDocument(data: item)
+        } catch {
+            print("Error saving to DB")
+        }
+    }*/
+    
+    
 }
 

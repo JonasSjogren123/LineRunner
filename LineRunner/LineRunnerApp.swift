@@ -6,15 +6,20 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 @main
 struct LineRunnerApp: App {
-   // @StateObject var coordinates = Coordinates()
+
+    init() {
+   FirebaseApp.configure()
+    }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-              //  .environmentObject(coordinates)
+            //ContentView()
+            PlayerLoginView()
         }
     }
 }
