@@ -54,10 +54,10 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     
      func saveToFirestore(coordinate: [Double]) {
          let coordinate = [Double](coordinate)
-         guard let user = Auth.auth().currentUser else {return}
+        guard Auth.auth().currentUser != nil else {return}
          
          do {
-             _ = try db.collection("users").document(user.uid).collection("items").addDocument(from: coordinate)
+            let _ = try db.collection("Coordinates").addDocument(from: coordinate)
          } catch {
              print("Error saving to DB")
          }

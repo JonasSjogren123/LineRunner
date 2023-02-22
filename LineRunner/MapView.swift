@@ -61,7 +61,7 @@ class Coordinator: NSObject, MKMapViewDelegate {
     return MKOverlayRenderer()
   }
     
-    func listenToFirestore() {
+   /* func listenToFirestore() {
         
         guard let user = Auth.auth().currentUser else {return}
 
@@ -87,6 +87,6 @@ class Coordinator: NSObject, MKMapViewDelegate {
                 }
             }
         }
-    }
+    }*/
 }
 
