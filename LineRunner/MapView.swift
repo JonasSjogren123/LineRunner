@@ -14,7 +14,7 @@ import Firebase
 struct MapView: UIViewRepresentable {
     
     let region: MKCoordinateRegion
-    let lineCoordinates: [CLLocationCoordinate2D]
+    @State var lineCoordinates: [CLLocationCoordinate2D]
 
   func makeUIView(context: Context) -> MKMapView {
     let mapView = MKMapView()
@@ -30,11 +30,42 @@ struct MapView: UIViewRepresentable {
   func updateUIView(_ view: MKMapView, context: Context) {
     //lineCoordinates = places
     print("updateUIView")
+    
+    listenToFirestore(coordinates: lineCoordinates)
+    print("          CCCCCCCCCCCCCCCCCCC lineCoordinates \(lineCoordinates)          ")
+
+    
     let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
     view.addOverlay(polyline)
 
   }
-
+    
+    func listenToFirestore(coordinates: [CLLocationCoordinate2D]) {
+        var coordinates = coordinates
+        let db = Firestore.firestore()
+        coordinates.removeAll()
+        let ref = db.collection("Coordinates")
+        ref.getDocuments { snapshot, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    let data = document.data()
+                    
+                    let latitude = data["latitude"] as? Double ?? 14.15
+                    let longitude = data["longitude"] as? Double ?? 16.17
+                    
+                    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    coordinates.append(coordinate)
+                    print("          CCCCCCCCCCCCCCCCCCCcoordinates \(coordinates)          ")
+                }
+            }
+        }
+    }
+    
   func makeCoordinator() -> Coordinator {
     Coordinator(self)
   }
@@ -43,7 +74,6 @@ struct MapView: UIViewRepresentable {
 
 class Coordinator: NSObject, MKMapViewDelegate {
     
-    let db = Firestore.firestore()
     var parent: MapView
     @State var coordinates = [Coordinates]()
     
@@ -60,6 +90,8 @@ class Coordinator: NSObject, MKMapViewDelegate {
     }
     return MKOverlayRenderer()
   }
+    
+
     
    /* func listenToFirestore() {
         

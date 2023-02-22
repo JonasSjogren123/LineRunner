@@ -11,8 +11,6 @@ import Firebase
 
 class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
   
-    let db = Firestore.firestore()
-
     let manager = CLLocationManager()
     var location : CLLocationCoordinate2D?
 
@@ -43,7 +41,7 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
         longitude = location?.longitude ?? 0
         coordinate = [latitude, longitude]
         
-        saveToFirestore(coordinate: coordinate)
+        addCoordinateFirestore(coordinate: coordinate)
         print("LLLLLLLLLLLLL latitude = \(latitude), longitude = \(longitude) LLLLLLLLLLLL")
 
         print("Plats uppdaterad! \(location)")
@@ -52,15 +50,14 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
        print("lineCoordinates \(lineCoordinates)")
     }
     
-     func saveToFirestore(coordinate: [Double]) {
-         let coordinate = [Double](coordinate)
-        guard Auth.auth().currentUser != nil else {return}
-         
-         do {
-            let _ = try db.collection("Coordinates").addDocument(from: coordinate)
-         } catch {
-             print("Error saving to DB")
-         }
+     func addCoordinateFirestore(coordinate: [Double]) {
+        let db = Firestore.firestore()
+        let ref = db.collection("Coordinates").document("Coordinates")
+        ref.setData(["latitude": latitude, "longitude": longitude]) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
      }
 }
 

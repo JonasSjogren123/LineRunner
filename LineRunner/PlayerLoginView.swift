@@ -27,7 +27,8 @@ struct SigningInView: View {
     @Binding var signedIn : Bool
     
     var body: some View {
-        Text("Signing in...")
+        Text("Line Runner")
+            .font(.system(size: 50))
             .onAppear(){
                 Auth.auth().signInAnonymously { authResult, error in
                     if let error = error {
