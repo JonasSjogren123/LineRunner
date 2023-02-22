@@ -21,9 +21,6 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     @State var longitude: Double = 0
     @State var coordinate: [Double] = [0.0, 0.0]
 
-    
-    let player = Player()
-
     override init() {
         super.init()
         manager.delegate = self
@@ -41,23 +38,28 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
         longitude = location?.longitude ?? 0
         coordinate = [latitude, longitude]
         
-        addCoordinateFirestore(coordinate: coordinate)
         print("LLLLLLLLLLLLL latitude = \(latitude), longitude = \(longitude) LLLLLLLLLLLL")
 
         print("Plats uppdaterad! \(location)")
        
         lineCoordinates.append(location!)
+        sendCoordinateToFirestore(coordinate: coordinate)
+
        print("lineCoordinates \(lineCoordinates)")
     }
     
-     func addCoordinateFirestore(coordinate: [Double]) {
+     func sendCoordinateToFirestore(coordinate: [Double]) {
         let db = Firestore.firestore()
         let ref = db.collection("Coordinates").document("Coordinates")
         ref.setData(["latitude": latitude, "longitude": longitude]) { error in
             if let error = error {
                 print(error.localizedDescription)
+                print("Det blev fel med uppladdningen till Firestore!")
             }
         }
+        print("Det blev nästan rätt med uppladdningen till Firestore!")
+
+        print("func sendCoordinateToFirestore")
      }
 }
 

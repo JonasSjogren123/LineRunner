@@ -31,7 +31,7 @@ struct MapView: UIViewRepresentable {
     //lineCoordinates = places
     print("updateUIView")
     
-    listenToFirestore(coordinates: lineCoordinates)
+    listenForCoordinateFromFirestore(coordinates: lineCoordinates)
     print("          CCCCCCCCCCCCCCCCCCC lineCoordinates \(lineCoordinates)          ")
 
     
@@ -40,7 +40,7 @@ struct MapView: UIViewRepresentable {
 
   }
     
-    func listenToFirestore(coordinates: [CLLocationCoordinate2D]) {
+    func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) {
         var coordinates = coordinates
         let db = Firestore.firestore()
         coordinates.removeAll()
