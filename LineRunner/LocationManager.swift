@@ -43,7 +43,7 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
         longitude = location?.longitude ?? 0
         coordinate = [latitude, longitude]
         
-        saveToFirestore(itemName: coordinate)
+        saveToFirestore(coordinate: coordinate)
         print("LLLLLLLLLLLLL latitude = \(latitude), longitude = \(longitude) LLLLLLLLLLLL")
 
         print("Plats uppdaterad! \(location)")
@@ -52,12 +52,12 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
        print("lineCoordinates \(lineCoordinates)")
     }
     
-     func saveToFirestore(itemName: [Double]) {
-         let item = [Double](itemName)
+     func saveToFirestore(coordinate: [Double]) {
+         let coordinate = [Double](coordinate)
          guard let user = Auth.auth().currentUser else {return}
          
          do {
-             _ = try db.collection("users").document(user.uid).collection("items").addDocument(from: item)
+             _ = try db.collection("users").document(user.uid).collection("items").addDocument(from: coordinate)
          } catch {
              print("Error saving to DB")
          }

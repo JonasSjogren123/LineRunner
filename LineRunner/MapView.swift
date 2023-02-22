@@ -12,7 +12,7 @@ import CoreLocation
 import Firebase
 
 struct MapView: UIViewRepresentable {
-
+    
     let region: MKCoordinateRegion
     let lineCoordinates: [CLLocationCoordinate2D]
 
@@ -45,6 +45,7 @@ class Coordinator: NSObject, MKMapViewDelegate {
     
     let db = Firestore.firestore()
     var parent: MapView
+    @State var coordinates = [Coordinates]()
     
     init(_ parent: MapView) {
     self.parent = parent
@@ -61,22 +62,25 @@ class Coordinator: NSObject, MKMapViewDelegate {
   }
     
     func listenToFirestore() {
+        
+        guard let user = Auth.auth().currentUser else {return}
+
         db.collection("items").addSnapshotListener { snapshot, err in
             guard let snapshot = snapshot else {return}
             
             if let err = err {
                 print("Error getting document \(err)")
             } else {
-                players.removeAll()
+                self.coordinates.removeAll()
                 for document in snapshot.documents {
 
                     let result = Result {
-                        try document.data(as: TestFirebaseItem.self)
+                        try document.data(as: Coordinates.self)
                     }
                     switch result  {
-                    case .success(let item)  :
-                        players.append(item)
-                        print("testFirebaseItems FFFFFFFFFFFF\(players)FFFFFFFFFFFF")
+                    case .success(let coordinate)  :
+                        coordinates.append(coordinate)
+                        print("testFirebaseItems FFFFFFFFFFFF\(self.coordinates)FFFFFFFFFFFF")
                     case .failure(let error) :
                         print("Error decoding item: \(error)")
                     }
@@ -84,7 +88,5 @@ class Coordinator: NSObject, MKMapViewDelegate {
             }
         }
     }
-    
-    
 }
 
