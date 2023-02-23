@@ -35,7 +35,7 @@ struct MapView: UIViewRepresentable {
     view.addOverlay(polyline)
 
   }
-    
+
     func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) {
         var coordinates = coordinates
         let db = Firestore.firestore()
