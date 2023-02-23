@@ -44,7 +44,11 @@ struct MapView: UIViewRepresentable {
         var coordinates = coordinates
         let db = Firestore.firestore()
         coordinates.removeAll()
-        let ref = db.collection("Coordinates")
+        /*
+         db.collection("users").document(user.uid).collection("items").addSnapshotListener { snapshot, err in
+                     guard let snapshot = snapshot else {return}
+         */
+        let ref = db.collection("Coordinates").document("coordinate")
         ref.getDocuments { snapshot, error in
             guard error == nil else {
                 print(error!.localizedDescription)

@@ -50,7 +50,7 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     
      func sendCoordinateToFirestore(coordinate: [Double]) {
         let db = Firestore.firestore()
-        let ref = db.collection("Coordinates").document("Coordinates")
+        let ref = db.collection("Coordinates").document("coordinate")
         ref.setData(["latitude": latitude, "longitude": longitude]) { error in
             if let error = error {
                 print(error.localizedDescription)
