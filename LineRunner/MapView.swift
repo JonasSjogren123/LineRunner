@@ -39,7 +39,7 @@ struct MapView: UIViewRepresentable {
         
     }
     
-    func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) {
+    func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
         var coordinates = coordinates
         let db = Firestore.firestore()
         
@@ -69,6 +69,7 @@ struct MapView: UIViewRepresentable {
                 }
             }
         }
+        return coordinates
     }
     
     func makeCoordinator() -> Coordinator {
