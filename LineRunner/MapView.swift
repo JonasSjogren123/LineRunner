@@ -7,11 +7,14 @@
 
 import SwiftUI
 import MapKit
+import Foundation
+import CoreLocation
+import Firebase
 
 struct MapView: UIViewRepresentable {
     
     let region: MKCoordinateRegion
-    let lineCoordinates: [CLLocationCoordinate2D]
+    @State var lineCoordinates: [CLLocationCoordinate2D]
 
   func makeUIView(context: Context) -> MKMapView {
     let mapView = MKMapView()
@@ -25,13 +28,52 @@ struct MapView: UIViewRepresentable {
   }
 
   func updateUIView(_ view: MKMapView, context: Context) {
-    //lineCoordinates = places
-    print("updateUIView")
+
+    listenForCoordinateFromFirestore(coordinates: lineCoordinates)
+    
     let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
     view.addOverlay(polyline)
 
   }
-
+    
+    func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) {
+        var coordinates = coordinates
+        let db = Firestore.firestore()
+        coordinates.removeAll()
+        
+    }
+    
+    /*func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) {
+        var coordinates = coordinates
+        let db = Firestore.firestore()
+        coordinates.removeAll()
+     
+        /*
+         db.collection("users").document(user.uid).collection("items").addSnapshotListener { snapshot, err in
+                     guard let snapshot = snapshot else {return}
+         */
+        let ref = db.collection("Coordinates").document("coordinate")
+        ref.getDocuments { snapshot, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    let data = document.data()
+                    
+                    let latitude = data["latitude"] as? Double ?? 14.15
+                    let longitude = data["longitude"] as? Double ?? 16.17
+                    
+                    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    coordinates.append(coordinate)
+                    print("          CCCCCCCCCCCCCCCCCCCcoordinates \(coordinates)          ")
+                }
+            }
+        }
+    }*/
+    
   func makeCoordinator() -> Coordinator {
     Coordinator(self)
   }
@@ -39,9 +81,11 @@ struct MapView: UIViewRepresentable {
 }
 
 class Coordinator: NSObject, MKMapViewDelegate {
-  var parent: MapView
-
-  init(_ parent: MapView) {
+    
+    var parent: MapView
+    @State var coordinates = [Coordinates]()
+    
+    init(_ parent: MapView) {
     self.parent = parent
   }
 
@@ -55,23 +99,28 @@ class Coordinator: NSObject, MKMapViewDelegate {
     return MKOverlayRenderer()
   }
     
-    /*func listenToFirestore() {
+
+    
+   /* func listenToFirestore() {
+        
+        guard let user = Auth.auth().currentUser else {return}
+
         db.collection("items").addSnapshotListener { snapshot, err in
             guard let snapshot = snapshot else {return}
             
             if let err = err {
                 print("Error getting document \(err)")
             } else {
-                players.removeAll()
+                self.coordinates.removeAll()
                 for document in snapshot.documents {
 
                     let result = Result {
-                        try document.data(as: TestFirebaseItem.self)
+                        try document.data(as: Coordinates.self)
                     }
                     switch result  {
-                    case .success(let item)  :
-                        players.append(item)
-                        print("testFirebaseItems FFFFFFFFFFFF\(players)FFFFFFFFFFFF")
+                    case .success(let coordinate)  :
+                        coordinates.append(coordinate)
+                        print("testFirebaseItems FFFFFFFFFFFF\(self.coordinates)FFFFFFFFFFFF")
                     case .failure(let error) :
                         print("Error decoding item: \(error)")
                     }
@@ -79,7 +128,5 @@ class Coordinator: NSObject, MKMapViewDelegate {
             }
         }
     }*/
-    
-    
 }
 

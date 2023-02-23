@@ -8,9 +8,10 @@
 import Foundation
 import MapKit
 import SwiftUI
+import Firebase
 
 
-class Coordinates: ObservableObject {
+class Coordinates: ObservableObject/*, Codable */{
     
     @Published var lineCoordinates: [CLLocationCoordinate2D] = []
     

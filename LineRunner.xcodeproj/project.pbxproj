@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		790EE7C229A78F6200BB3E25 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790EE7C129A78F6200BB3E25 /* Coordinate.swift */; };
 		79AA498E29A2B070002ACC98 /* FirestoreStructTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AA498D29A2B070002ACC98 /* FirestoreStructTest.swift */; };
 		79AA499029A3C5FA002ACC98 /* PlayerLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AA498F29A3C5FA002ACC98 /* PlayerLoginView.swift */; };
 		79E4B31C299BDB77003FDB2D /* LineRunnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B31B299BDB77003FDB2D /* LineRunnerApp.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		790EE7C129A78F6200BB3E25 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		79AA498D29A2B070002ACC98 /* FirestoreStructTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreStructTest.swift; sourceTree = "<group>"; };
 		79AA498F29A3C5FA002ACC98 /* PlayerLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerLoginView.swift; sourceTree = "<group>"; };
 		79E4B318299BDB77003FDB2D /* LineRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 				79FFB82B299E862E00C73083 /* Player.swift */,
 				79FFB829299E73BE00C73083 /* TestFirebaseItem.swift */,
 				79AA498D29A2B070002ACC98 /* FirestoreStructTest.swift */,
+				790EE7C129A78F6200BB3E25 /* Coordinate.swift */,
 			);
 			path = LineRunner;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				79E4B34B299BDDF0003FDB2D /* LocationManager.swift in Sources */,
 				79E4B31C299BDB77003FDB2D /* LineRunnerApp.swift in Sources */,
 				79FFB82C299E862E00C73083 /* Player.swift in Sources */,
+				790EE7C229A78F6200BB3E25 /* Coordinate.swift in Sources */,
 				79AA499029A3C5FA002ACC98 /* PlayerLoginView.swift in Sources */,
 				79E4B349299BDDC4003FDB2D /* Coordinates.swift in Sources */,
 				79AA498E29A2B070002ACC98 /* FirestoreStructTest.swift in Sources */,
