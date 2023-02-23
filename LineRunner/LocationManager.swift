@@ -17,9 +17,6 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     @Published var coordinates = Coordinates()
     //@Published var locations: [CLLocationCoordinate2D] = []
     @Published var lineCoordinates: [CLLocationCoordinate2D] = []
-    @State var latitude: Double = 0
-    @State var longitude: Double = 0
-    @State var coordinate: [Double] = [0.0, 0.0]
 
     override init() {
         super.init()
@@ -34,32 +31,26 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //var location: CLLocationCoordinate2D
         location = locations.first?.coordinate
-        latitude = location?.latitude ?? 0
-        longitude = location?.longitude ?? 0
-        coordinate = [latitude, longitude]
         
-        print("LLLLLLLLLLLLL latitude = \(latitude), longitude = \(longitude) LLLLLLLLLLLL")
-
         print("Plats uppdaterad! \(location)")
        
-        lineCoordinates.append(location!)
-        sendCoordinateToFirestore(coordinate: coordinate)
-
-       print("lineCoordinates \(lineCoordinates)")
-    }
-    
-     func sendCoordinateToFirestore(coordinate: [Double]) {
-        let db = Firestore.firestore()
-        let ref = db.collection("Coordinates").document("coordinate")
-        ref.setData(["latitude": latitude, "longitude": longitude]) { error in
-            if let error = error {
-                print(error.localizedDescription)
-                print("Det blev fel med uppladdningen till Firestore!")
+        if let latitude = location?.latitude as? Double {
+            if let longitude = location?.longitude as? Double {
+                    let coordinate = Coordinate(id: "", lat: latitude, long: longitude)
+                    sendCoordinateToFirestore(coordinate: coordinate)
             }
         }
-        print("Det blev nästan rätt med uppladdningen till Firestore!")
-
-        print("func sendCoordinateToFirestore")
+    }
+    
+    func sendCoordinateToFirestore(coordinate: Coordinate) {
+        let db = Firestore.firestore()
+        let ref = db.collection("Coordinates")
+  
+        do {
+           _ = try  ref.addDocument(from: coordinate)
+        } catch {
+            print("error")
+        }
      }
 }
 
