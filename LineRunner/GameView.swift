@@ -25,8 +25,7 @@ struct GameView: View {
     var body: some View {
         ZStack {
             MapView(
-                region: region,
-                lineCoordinates: locationManager.lineCoordinates
+                region: region
             )
             .edgesIgnoringSafeArea(.all)
             

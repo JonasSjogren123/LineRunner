@@ -14,119 +14,84 @@ import Firebase
 struct MapView: UIViewRepresentable {
     
     let region: MKCoordinateRegion
-    @State var lineCoordinates: [CLLocationCoordinate2D]
-
-  func makeUIView(context: Context) -> MKMapView {
-    let mapView = MKMapView()
-    mapView.delegate = context.coordinator
-    mapView.region = region
-
-    let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
-    mapView.addOverlay(polyline)
-
-    return mapView
-  }
-
-  func updateUIView(_ view: MKMapView, context: Context) {
-
-    listenForCoordinateFromFirestore(coordinates: lineCoordinates)
+    var lineCoordinates: [CLLocationCoordinate2D] = []
     
-    let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
-    view.addOverlay(polyline)
-
-  }
-
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        mapView.region = region
+        
+        let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
+        mapView.addOverlay(polyline)
+        
+        return mapView
+    }
+    
+    func updateUIView(_ view: MKMapView, context: Context) {
+        
+        print("            func updateView                ")
+        
+        listenForCoordinateFromFirestore(coordinates: lineCoordinates)
+        print("                  lineCoordinates \(lineCoordinates)                     ")
+        
+        let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
+        view.addOverlay(polyline)
+        
+    }
+    
     func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) {
         var coordinates = coordinates
         let db = Firestore.firestore()
-        coordinates.removeAll()
         
-    }
-    
-    /*func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) {
-        var coordinates = coordinates
-        let db = Firestore.firestore()
-        coordinates.removeAll()
-     
-        /*
-         db.collection("users").document(user.uid).collection("items").addSnapshotListener { snapshot, err in
-                     guard let snapshot = snapshot else {return}
-         */
-        let ref = db.collection("Coordinates").document("coordinate")
-        ref.getDocuments { snapshot, error in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-            
-            if let snapshot = snapshot {
-                for document in snapshot.documents {
-                    let data = document.data()
-                    
-                    let latitude = data["latitude"] as? Double ?? 14.15
-                    let longitude = data["longitude"] as? Double ?? 16.17
-                    
-                    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    coordinates.append(coordinate)
-                    print("          CCCCCCCCCCCCCCCCCCCcoordinates \(coordinates)          ")
-                }
-            }
-        }
-    }*/
-    
-  func makeCoordinator() -> Coordinator {
-    Coordinator(self)
-  }
-
-}
-
-class Coordinator: NSObject, MKMapViewDelegate {
-    
-    var parent: MapView
-    @State var coordinates = [Coordinates]()
-    
-    init(_ parent: MapView) {
-    self.parent = parent
-  }
-
-  func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    if let routePolyline = overlay as? MKPolyline {
-      let renderer = MKPolylineRenderer(polyline: routePolyline)
-      renderer.strokeColor = UIColor.systemBlue
-      renderer.lineWidth = 4
-      return renderer
-    }
-    return MKOverlayRenderer()
-  }
-    
-
-    
-   /* func listenToFirestore() {
-        
-        guard let user = Auth.auth().currentUser else {return}
-
-        db.collection("items").addSnapshotListener { snapshot, err in
+        db.collection("Coordinates").addSnapshotListener {
+            snapshot, err in
             guard let snapshot = snapshot else {return}
             
             if let err = err {
                 print("Error getting document \(err)")
             } else {
-                self.coordinates.removeAll()
+                coordinates.removeAll()
                 for document in snapshot.documents {
-
+                    
                     let result = Result {
-                        try document.data(as: Coordinates.self)
+                        try document.data(as: Coordinate.self)
                     }
                     switch result  {
                     case .success(let coordinate)  :
+                        let latitude = coordinate.lat
+                        let longitude = coordinate.long
+                        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                        print("fromDB:  \(coordinate)")
                         coordinates.append(coordinate)
-                        print("testFirebaseItems FFFFFFFFFFFF\(self.coordinates)FFFFFFFFFFFF")
                     case .failure(let error) :
                         print("Error decoding item: \(error)")
                     }
                 }
             }
         }
-    }*/
-}
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
 
+    class Coordinator: NSObject, MKMapViewDelegate {
+        
+        var parent: MapView
+        @State var coordinates = [Coordinates]()
+        
+        init(_ parent: MapView) {
+            self.parent = parent
+        }
+        
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            if let routePolyline = overlay as? MKPolyline {
+                let renderer = MKPolylineRenderer(polyline: routePolyline)
+                renderer.strokeColor = UIColor.systemBlue
+                renderer.lineWidth = 4
+                return renderer
+            }
+            return MKOverlayRenderer()
+        }
+    }
+}
