@@ -31,14 +31,14 @@ struct MapView: UIViewRepresentable {
         
         print("            func updateView is running             ")
         
-        let newLineCoordinates = listenForCoordinateFromFirestore(coordinates: lineCoordinates)
-        print("                  lineCoordinates \(newLineCoordinates)                     ")
+        //let newLineCoordinates = listenForCoordinateFromFirestore(coordinates: lineCoordinates)
+        print("                  lineCoordinates \(lineCoordinates)                     ")
         
-        let polyline = MKPolyline(coordinates: newLineCoordinates, count: newLineCoordinates.count)
+        let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
         view.addOverlay(polyline)
     }
 
-    func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
+    /*func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
         var coordinates = coordinates
         let db = Firestore.firestore()
         
@@ -51,7 +51,6 @@ struct MapView: UIViewRepresentable {
             } else {
                 coordinates.removeAll()
                 for document in snapshot.documents {
-                    
                     let result = Result {
                         try document.data(as: Coordinate.self)
                     }
@@ -69,7 +68,7 @@ struct MapView: UIViewRepresentable {
             }
         }
         return coordinates
-    }
+    }*/
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
