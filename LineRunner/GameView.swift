@@ -10,7 +10,6 @@ import Firebase
 import FirebaseAuth
 
 struct GameView: View {
-    
     let db = Firestore.firestore()
     
     @StateObject var locationManager = LocationManager()
@@ -18,15 +17,15 @@ struct GameView: View {
 
     @State var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3323341, longitude: -122.03125), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
 
-    @State var player = Player()
-    @State var players = [Player]()
+    @State var coordinate = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+    @State var coordinates: [CLLocationCoordinate2D] = []
     @State var shouldHide = false
     
     var body: some View {
         ZStack {
             MapView(
                 region: region,
-                lineCoordinates: locationManager.lineCoordinates
+                lineCoordinates: listenForCoordinateFromFirestore(coordinates: coordinates)
             )
             .edgesIgnoringSafeArea(.all)
             
@@ -39,8 +38,41 @@ struct GameView: View {
                     .font(.system(size: 100))
             }
             .opacity(shouldHide ? 0: 1)
-            
         }
     }
+    
+    func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
+        var coordinates = coordinates
+        let db = Firestore.firestore()
+        
+        db.collection("Coordinates").addSnapshotListener {
+            snapshot, err in
+            guard let snapshot = snapshot else {return}
+            
+            if let err = err {
+                print("Error getting document \(err)")
+            } else {
+                coordinates.removeAll()
+                for document in snapshot.documents {
+                    
+                    let result = Result {
+                        try document.data(as: Coordinate.self)
+                    }
+                    switch result  {
+                    case .success(let coordinate)  :
+                        let latitude = coordinate.lat
+                        let longitude = coordinate.long
+                        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                        print("fromDB:  \(coordinate)")
+                        coordinates.append(coordinate)
+                    case .failure(let error) :
+                        print("Error decoding item: \(error)")
+                    }
+                }
+            }
+        }
+        return coordinates
+    }
+    
 }
 
