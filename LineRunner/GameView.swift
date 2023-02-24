@@ -25,7 +25,7 @@ struct GameView: View {
         ZStack {
             MapView(
                 region: region,
-                lineCoordinates: listenForCoordinateFromFirestore(coordinates: coordinates)
+                lineCoordinates: listenForCoordinateFromFirestore(/*coordinates: coordinates*/)
             )
             .edgesIgnoringSafeArea(.all)
             
@@ -41,8 +41,8 @@ struct GameView: View {
         }
     }
     
-    func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
-        var coordinates = coordinates
+    func listenForCoordinateFromFirestore(/*coordinates: [CLLocationCoordinate2D]*/) -> [CLLocationCoordinate2D] {
+        var coordinates: [CLLocationCoordinate2D]  = [] /*coordinates*/
         let db = Firestore.firestore()
         
         db.collection("Coordinates").addSnapshotListener {
@@ -52,7 +52,7 @@ struct GameView: View {
             if let err = err {
                 print("Error getting document \(err)")
             } else {
-                coordinates.removeAll()
+                //coordinates.removeAll()
                 for document in snapshot.documents {
                     
                     let result = Result {
@@ -71,8 +71,8 @@ struct GameView: View {
                 }
             }
         }
+        print("coordinates \(coordinates)")
         return coordinates
     }
-    
 }
 
