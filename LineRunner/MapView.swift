@@ -34,7 +34,7 @@ struct MapView: UIViewRepresentable {
         let newLineCoordinates = listenForCoordinateFromFirestore(coordinates: lineCoordinates)
         print("                  lineCoordinates \(newLineCoordinates)                     ")
         
-        let polyline = MKPolyline(coordinates: newLineCoordinates,count: newLineCoordinates.count)
+        let polyline = MKPolyline(coordinates: newLineCoordinates, count: newLineCoordinates.count)
         view.addOverlay(polyline)
     }
     
