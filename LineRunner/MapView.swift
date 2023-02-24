@@ -29,14 +29,13 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ view: MKMapView, context: Context) {
         
-        print("            func updateView                ")
+        print("            func updateView is running             ")
         
-        listenForCoordinateFromFirestore(coordinates: lineCoordinates)
-        print("                  lineCoordinates \(lineCoordinates)                     ")
+        let newLineCoordinates = listenForCoordinateFromFirestore(coordinates: lineCoordinates)
+        print("                  lineCoordinates \(newLineCoordinates)                     ")
         
-        let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
+        let polyline = MKPolyline(coordinates: newLineCoordinates,count: newLineCoordinates.count)
         view.addOverlay(polyline)
-        
     }
     
     func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
