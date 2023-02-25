@@ -41,7 +41,7 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
             }
         }
     }
-    
+
     func sendCoordinateToFirestore(coordinate: Coordinate) {
         let db = Firestore.firestore()
         let ref = db.collection("Coordinates")
