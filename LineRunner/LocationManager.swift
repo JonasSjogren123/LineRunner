@@ -8,7 +8,7 @@ import SwiftUI
 import Foundation
 import CoreLocation
 import Firebase
-
+//
 class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
   
     let manager = CLLocationManager()
