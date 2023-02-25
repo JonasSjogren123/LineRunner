@@ -54,15 +54,14 @@ struct GameView: View {
             } else {
                 //coordinates.removeAll()
                 for document in snapshot.documents {
-                    
                     let result = Result {
                         try document.data(as: Coordinate.self)
                     }
                     switch result  {
-                    case .success(let coordinate)  :
-                        let latitude = coordinate.lat
-                        let longitude = coordinate.long
-                        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    case .success(let dBCoordinate)  :
+                        //let latitude = coordinate.lat
+                        //let longitude = coordinate.long
+                        let coordinate = CLLocationCoordinate2D(latitude: dBCoordinate.lat, longitude: dBCoordinate.long)
                         print("fromDB:  \(coordinate)")
                         coordinates.append(coordinate)
                     case .failure(let error) :

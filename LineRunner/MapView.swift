@@ -14,7 +14,7 @@ import Firebase
 struct MapView: UIViewRepresentable {
     
     let region: MKCoordinateRegion
-    var lineCoordinates: [CLLocationCoordinate2D] = []
+    let lineCoordinates: [CLLocationCoordinate2D]
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
