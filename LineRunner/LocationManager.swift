@@ -55,7 +55,7 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
      }
     
     func listenForCoordinateFromFirestore() -> CLLocationCoordinate2D {
-        var toLmCordinate: CLLocationCoordinate2D?
+        var toLmCoordinate: CLLocationCoordinate2D?
         var toLmCoordinates: [CLLocationCoordinate2D]  = [] /*coordinates*/
         let db = Firestore.firestore()
         db.collection("Coordinates").addSnapshotListener {
@@ -73,16 +73,16 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
                     case .success(let fromDbCoordinate)  :
                         let latitude = fromDbCoordinate.lat as? Double
                         let longitude = fromDbCoordinate.long as? Double
-                        toLmCordinate = CLLocationCoordinate2D(latitude: latitude ?? 0.0, longitude: longitude ?? 0.0)
-                        print("fromDB:  \(toLmCordinate)")
-                        //toLmCoordinates.append(toLmCordinate)
+                        toLmCoordinate = CLLocationCoordinate2D(latitude: latitude ?? 0.0, longitude: longitude ?? 0.0)
+                        print("fromDB:  \(toLmCoordinate)")
+                        //toLmCoordinates.append(toLmCordinate ?? CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0))
                     case .failure(let error) :
                         print("Error decoding item: \(error)")
                     }
                 }
             }
         }
-        return toLmCordinate!
+        return toLmCoordinate ?? CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     }
 }
 
