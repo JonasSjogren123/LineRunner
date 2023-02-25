@@ -40,6 +40,7 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
                     sendCoordinateToFirestore(coordinate: toDbCoordinate)
             }
         }
+        lineCoordinates.append(listenForCoordinateFromFirestore())
     }
 
     func sendCoordinateToFirestore(coordinate: Coordinate) {
@@ -53,14 +54,13 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
         }
      }
     
-    func listenForCoordinateFromFirestore(/*coordinates: [CLLocationCoordinate2D]*/) -> [CLLocationCoordinate2D] {
+    func listenForCoordinateFromFirestore() -> CLLocationCoordinate2D {
+        var toLmCordinate: CLLocationCoordinate2D?
         var toLmCoordinates: [CLLocationCoordinate2D]  = [] /*coordinates*/
         let db = Firestore.firestore()
-        
         db.collection("Coordinates").addSnapshotListener {
             snapshot, err in
             guard let snapshot = snapshot else {return}
-            
             if let err = err {
                 print("Error getting document \(err)")
             } else {
@@ -71,19 +71,18 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
                     }
                     switch result  {
                     case .success(let fromDbCoordinate)  :
-                        //let latitude = coordinate.lat
-                        //let longitude = coordinate.long
-                        let toLmCordinate = CLLocationCoordinate2D(latitude: fromDbCoordinate.lat, longitude: fromDbCoordinate.long)
+                        let latitude = fromDbCoordinate.lat as? Double
+                        let longitude = fromDbCoordinate.long as? Double
+                        toLmCordinate = CLLocationCoordinate2D(latitude: latitude ?? 0.0, longitude: longitude ?? 0.0)
                         print("fromDB:  \(toLmCordinate)")
-                        toLmCoordinates.append(toLmCordinate)
+                        //toLmCoordinates.append(toLmCordinate)
                     case .failure(let error) :
                         print("Error decoding item: \(error)")
                     }
                 }
             }
         }
-        print("coordinates \(toLmCoordinates)")
-        return toLmCoordinates
+        return toLmCordinate!
     }
 }
 
