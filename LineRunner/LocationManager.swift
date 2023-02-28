@@ -38,19 +38,21 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
         print("func locationManager Plats uppdaterad! \(location ?? defaultCoordinate)")
        
         if let latitude = location?.latitude {
+            print("location?.latitude = \(latitude)")
             if let longitude = location?.longitude {
+                print("location?.longitude = \(longitude)")
                     let toDbCoordinate = Coordinate(id: "", lat: latitude, long: longitude)
+                print("toDbCoordinate = \(toDbCoordinate)")
             }
         }
         lineCoordinates.append(listenForCoordinateFromFirestore())
-        print("lineCoordinates.append(listenForCoordinateFromFirestore())")
+        print("lineCoordinates.append(listenForCoordinateFromFirestore())!!")
     }
 
     func sendCoordinateToFirestore(coordinate: Coordinate) {
+        print("func sendCoordinateToFirestore")
         let db = Firestore.firestore()
         let ref = db.collection("Coordinates")
-        print("func sendCoordinateToFirestore")
-  
         do {
            _ = try  ref.addDocument(from: coordinate)
             print("try func sendCoordinateToFirestore \(coordinate)")
