@@ -29,7 +29,6 @@
 		79FFB828299E5FE500C73083 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79FFB827299E5FE500C73083 /* GoogleService-Info.plist */; };
 		79FFB82A299E73BE00C73083 /* TestFirebaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFB829299E73BE00C73083 /* TestFirebaseItem.swift */; };
 		79FFB82C299E862E00C73083 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFB82B299E862E00C73083 /* Player.swift */; };
-		79FFB82E299E935900C73083 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFB82D299E935900C73083 /* PlayerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +70,6 @@
 		79FFB827299E5FE500C73083 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79FFB829299E73BE00C73083 /* TestFirebaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFirebaseItem.swift; sourceTree = "<group>"; };
 		79FFB82B299E862E00C73083 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		79FFB82D299E935900C73083 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +137,6 @@
 				79E4B324299BDB79003FDB2D /* Info.plist */,
 				79E4B321299BDB79003FDB2D /* Preview Content */,
 				79AA498F29A3C5FA002ACC98 /* PlayerLoginView.swift */,
-				79FFB82D299E935900C73083 /* PlayerManager.swift */,
 				79FFB82B299E862E00C73083 /* Player.swift */,
 				79FFB829299E73BE00C73083 /* TestFirebaseItem.swift */,
 				79AA498D29A2B070002ACC98 /* FirestoreStructTest.swift */,
@@ -325,7 +322,6 @@
 				79AA499029A3C5FA002ACC98 /* PlayerLoginView.swift in Sources */,
 				79E4B349299BDDC4003FDB2D /* Coordinates.swift in Sources */,
 				79AA498E29A2B070002ACC98 /* FirestoreStructTest.swift in Sources */,
-				79FFB82E299E935900C73083 /* PlayerManager.swift in Sources */,
 				79FFB82A299E73BE00C73083 /* TestFirebaseItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

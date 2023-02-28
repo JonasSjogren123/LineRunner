@@ -29,47 +29,13 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ view: MKMapView, context: Context) {
         
-        print("            func updateView is running             ")
-        
-        //let newLineCoordinates = listenForCoordinateFromFirestore(coordinates: lineCoordinates)
-        print("                  lineCoordinates \(lineCoordinates)                     ")
+        print("            View MapView func updateView is running             ")
+        print("            View MapView lineCoordinates \(lineCoordinates)    ")
         
         let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
         view.addOverlay(polyline)
     }
 
-    /*func listenForCoordinateFromFirestore(coordinates: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
-        var coordinates = coordinates
-        let db = Firestore.firestore()
-        
-        db.collection("Coordinates").addSnapshotListener {
-            snapshot, err in
-            guard let snapshot = snapshot else {return}
-            
-            if let err = err {
-                print("Error getting document \(err)")
-            } else {
-                coordinates.removeAll()
-                for document in snapshot.documents {
-                    let result = Result {
-                        try document.data(as: Coordinate.self)
-                    }
-                    switch result  {
-                    case .success(let coordinate)  :
-                        let latitude = coordinate.lat
-                        let longitude = coordinate.long
-                        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                        print("fromDB:  \(coordinate)")
-                        coordinates.append(coordinate)
-                    case .failure(let error) :
-                        print("Error decoding item: \(error)")
-                    }
-                }
-            }
-        }
-        return coordinates
-    }*/
-    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }

@@ -13,7 +13,7 @@ struct GameView: View {
     let db = Firestore.firestore()
     
     @StateObject var locationManager = LocationManager()
-    @StateObject var playerManager = PlayerManager()
+    //@StateObject var playerManager = PlayerManager()
 
     @State var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.3323341, longitude: -122.03125), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
 
