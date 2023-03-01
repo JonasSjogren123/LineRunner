@@ -43,7 +43,7 @@ struct MapView: UIViewRepresentable {
     class Coordinator: NSObject, MKMapViewDelegate {
         
         var parent: MapView
-        @State var coordinates = [Coordinates]()
+        @State var coordinates = [Positions]()
         
         init(_ parent: MapView) {
             self.parent = parent

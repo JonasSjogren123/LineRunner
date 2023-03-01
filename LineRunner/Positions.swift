@@ -11,7 +11,7 @@ import SwiftUI
 import Firebase
 
 
-class Coordinates: ObservableObject/*, Codable */{
+class Positions: ObservableObject/*, Codable */{
     
     @Published var lineCoordinates: [CLLocationCoordinate2D] = []
     

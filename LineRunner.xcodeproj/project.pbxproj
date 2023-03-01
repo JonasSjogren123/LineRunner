@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		790EE7C229A78F6200BB3E25 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790EE7C129A78F6200BB3E25 /* Coordinate.swift */; };
+		790EE7C229A78F6200BB3E25 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790EE7C129A78F6200BB3E25 /* Position.swift */; };
 		79AA498E29A2B070002ACC98 /* FirestoreStructTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AA498D29A2B070002ACC98 /* FirestoreStructTest.swift */; };
 		79AA499029A3C5FA002ACC98 /* PlayerLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AA498F29A3C5FA002ACC98 /* PlayerLoginView.swift */; };
 		79E4B31C299BDB77003FDB2D /* LineRunnerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B31B299BDB77003FDB2D /* LineRunnerApp.swift */; };
@@ -17,7 +17,7 @@
 		79E4B32E299BDB7A003FDB2D /* LineRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B32D299BDB7A003FDB2D /* LineRunnerTests.swift */; };
 		79E4B339299BDB7A003FDB2D /* LineRunnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B338299BDB7A003FDB2D /* LineRunnerUITests.swift */; };
 		79E4B347299BDD79003FDB2D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B346299BDD79003FDB2D /* MapView.swift */; };
-		79E4B349299BDDC4003FDB2D /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B348299BDDC4003FDB2D /* Coordinates.swift */; };
+		79E4B349299BDDC4003FDB2D /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B348299BDDC4003FDB2D /* Positions.swift */; };
 		79E4B34B299BDDF0003FDB2D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B34A299BDDF0003FDB2D /* LocationManager.swift */; };
 		79FFB81A299E411000C73083 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 79FFB819299E411000C73083 /* FirebaseFirestore */; };
 		79FFB81C299E411000C73083 /* FirebaseFunctionsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 79FFB81B299E411000C73083 /* FirebaseFunctionsSwift-Beta */; };
@@ -49,7 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		790EE7C129A78F6200BB3E25 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		790EE7C129A78F6200BB3E25 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		79AA498D29A2B070002ACC98 /* FirestoreStructTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreStructTest.swift; sourceTree = "<group>"; };
 		79AA498F29A3C5FA002ACC98 /* PlayerLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerLoginView.swift; sourceTree = "<group>"; };
 		79E4B318299BDB77003FDB2D /* LineRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +65,7 @@
 		79E4B338299BDB7A003FDB2D /* LineRunnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineRunnerUITests.swift; sourceTree = "<group>"; };
 		79E4B33A299BDB7A003FDB2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79E4B346299BDD79003FDB2D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		79E4B348299BDDC4003FDB2D /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		79E4B348299BDDC4003FDB2D /* Positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
 		79E4B34A299BDDF0003FDB2D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		79FFB827299E5FE500C73083 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79FFB829299E73BE00C73083 /* TestFirebaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFirebaseItem.swift; sourceTree = "<group>"; };
@@ -131,8 +131,9 @@
 				79E4B31B299BDB77003FDB2D /* LineRunnerApp.swift */,
 				79E4B31D299BDB77003FDB2D /* GameView.swift */,
 				79E4B346299BDD79003FDB2D /* MapView.swift */,
-				79E4B348299BDDC4003FDB2D /* Coordinates.swift */,
 				79E4B34A299BDDF0003FDB2D /* LocationManager.swift */,
+				790EE7C129A78F6200BB3E25 /* Position.swift */,
+				79E4B348299BDDC4003FDB2D /* Positions.swift */,
 				79E4B31F299BDB79003FDB2D /* Assets.xcassets */,
 				79E4B324299BDB79003FDB2D /* Info.plist */,
 				79E4B321299BDB79003FDB2D /* Preview Content */,
@@ -140,7 +141,6 @@
 				79FFB82B299E862E00C73083 /* Player.swift */,
 				79FFB829299E73BE00C73083 /* TestFirebaseItem.swift */,
 				79AA498D29A2B070002ACC98 /* FirestoreStructTest.swift */,
-				790EE7C129A78F6200BB3E25 /* Coordinate.swift */,
 			);
 			path = LineRunner;
 			sourceTree = "<group>";
@@ -318,9 +318,9 @@
 				79E4B34B299BDDF0003FDB2D /* LocationManager.swift in Sources */,
 				79E4B31C299BDB77003FDB2D /* LineRunnerApp.swift in Sources */,
 				79FFB82C299E862E00C73083 /* Player.swift in Sources */,
-				790EE7C229A78F6200BB3E25 /* Coordinate.swift in Sources */,
+				790EE7C229A78F6200BB3E25 /* Position.swift in Sources */,
 				79AA499029A3C5FA002ACC98 /* PlayerLoginView.swift in Sources */,
-				79E4B349299BDDC4003FDB2D /* Coordinates.swift in Sources */,
+				79E4B349299BDDC4003FDB2D /* Positions.swift in Sources */,
 				79AA498E29A2B070002ACC98 /* FirestoreStructTest.swift in Sources */,
 				79FFB82A299E73BE00C73083 /* TestFirebaseItem.swift in Sources */,
 			);

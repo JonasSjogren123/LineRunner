@@ -15,7 +15,7 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     var location : CLLocationCoordinate2D?
 
     @Published var lastCoordinate: CLLocationCoordinate2D?
-    @Published var coordinates = Coordinates()
+    @Published var positions = Positions()
     @Published var toLmCoordinate: CLLocationCoordinate2D?
     @Published var toLmCoordinates: [CLLocationCoordinate2D]?
     @Published var lineCoordinates: [CLLocationCoordinate2D] = []
@@ -37,29 +37,30 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
         
         print("func locationManager Plats uppdaterad! \(location ?? defaultCoordinate)")
        
-        if let latitude = location?.latitude {
-            print("location?.latitude = \(latitude)")
-            if let longitude = location?.longitude {
-                print("location?.longitude = \(longitude)")
-                    let toDbCoordinate = Coordinate(id: "", lat: latitude, long: longitude)
-                print("toDbCoordinate = \(toDbCoordinate)")
+        if let toDbLatitude = location?.latitude {
+            print("location?.latitude = \(toDbLatitude)")
+            if let toDbLongitude = location?.longitude {
+                print("location?.longitude = \(toDbLongitude)")
+                let toDbPosition = Position(id: "", positionLatitude: toDbLatitude, positionLongitude: toDbLongitude)
+                print("toDbCoordinate = \(toDbPosition)")
+                sendPositionToFirestore(position: toDbPosition)
             }
         }
         lineCoordinates.append(listenForCoordinateFromFirestore())
         print("lineCoordinates.append(listenForCoordinateFromFirestore())!!")
     }
 
-    func sendCoordinateToFirestore(coordinate: Coordinate) {
+    func sendPositionToFirestore(position: Position) {
         print("func sendCoordinateToFirestore")
         let db = Firestore.firestore()
         let ref = db.collection("Coordinates")
         do {
-           _ = try  ref.addDocument(from: coordinate)
-            print("try func sendCoordinateToFirestore \(coordinate)")
+           _ = try  ref.addDocument(from: position)
+            print("try func sendPositionToFirestore \(position)")
         } catch {
             print("error")
         }
-        print("func sendCoordinateToFirestore")
+        print("func sendPostitionToFirestore")
      }
     
     func listenForCoordinateFromFirestore() -> CLLocationCoordinate2D {
@@ -74,12 +75,12 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
                 self.lineCoordinates.removeAll()
                 for document in snapshot.documents {
                     let result = Result {
-                        try document.data(as: Coordinate.self)
+                        try document.data(as: Position.self)
                     }
                     switch result  {
                     case .success(let fromDbCoordinate)  :
-                        let latitude = fromDbCoordinate.lat
-                        let longitude = fromDbCoordinate.long
+                        let latitude = fromDbCoordinate.positionLatitude
+                        let longitude = fromDbCoordinate.positionLongitude
                         self.toLmCoordinate = CLLocationCoordinate2D(latitude: latitude , longitude: longitude )
                         print("Here there should be a toLmCoordinate")
                         print("fromDB toLmCoordinate:  \(self.toLmCoordinate ?? self.defaultCoordinate)")
