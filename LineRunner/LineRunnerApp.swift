@@ -4,7 +4,7 @@
 //
 //  Created by Jonas Sjögren on 2023-02-14.
 // Branch CoordinatesToFirestore
-// Branch tmp2
+// Branch CleaningCoordinates
 
 import SwiftUI
 import Firebase
