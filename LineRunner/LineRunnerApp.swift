@@ -3,8 +3,7 @@
 //  LineRunner
 //
 //  Created by Jonas Sjögren on 2023-02-14.
-// Branch CoordinatesToFirestore
-// Branch CleaningCoordinates
+// Branch deleting_old_coordinates
 
 import SwiftUI
 import Firebase
