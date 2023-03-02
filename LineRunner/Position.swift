@@ -13,6 +13,7 @@ struct Position  : Codable, Identifiable  {
     @DocumentID var id : String?
     var positionLatitude: Double
     var positionLongitude: Double
+    var timeStamp : Double
     
     var coordinate : CLLocationCoordinate2D {
             CLLocationCoordinate2D(latitude: positionLatitude, longitude: positionLongitude)
