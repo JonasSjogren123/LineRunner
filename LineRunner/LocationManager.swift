@@ -48,6 +48,7 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
     }
     
     func sendPositionToFirestore(position: Position) {
+        deleteAllCoordinatesFromFirestore()
         print("func sendCoordinateToFirestore")
         let db = Firestore.firestore()
         let ref = db.collection("Coordinates")
@@ -58,6 +59,13 @@ class LocationManager : NSObject, CLLocationManagerDelegate , ObservableObject{
         } catch {
             print("error")
         }
+    }
+    
+    func deleteAllCoordinatesFromFirestore() {
+        let db = Firestore.firestore()
+        let ref = db.collection("Coordinates")
+        //1. Identifiera alla coordinater som skall tas bort ifrån ref
+        //2. Gör en for loop som tar bort alla koordinaterna från ref
     }
     
     func listenForCoordinateFromFirestore() {
